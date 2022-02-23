@@ -1,2 +1,2 @@
-# mbti-app-
+# mbti-app
 Personality-guidance app based on MBTI 
