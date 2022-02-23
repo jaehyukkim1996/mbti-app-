@@ -33,5 +33,5 @@ function login() {
 }
 
 function register() {
-    window.location.assign("http://lewigolski-bk.shop/register");
+    window.location.assign("http://lewigolski-bk.shop/registration");
 }

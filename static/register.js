@@ -6,12 +6,12 @@ function register() {
     if (email.includes("@") == true && password == password_confirm) {
         $.ajax({
             type: "POST",
-            url: "/registration",
+            url: "/register",
             data: { name: name, email: email, password: password },
             success: function (response) {
                 alert(`${response["msg"]}`);
                 window.location.assign(
-                    "http://lewigolski-bk.shop/register/mbti"
+                    "http://lewigolski-bk.shop/registration/mbti"
                 );
             },
         });
