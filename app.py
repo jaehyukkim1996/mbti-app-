@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, jsonify, session, url_for, redirect, flash
 from datetime import timedelta
 
+import requests
+from bs4 import BeautifulSoup
+
 from pymongo import MongoClient
 
 client = MongoClient(
@@ -147,7 +150,141 @@ def logout():
 
 # 여기서부터가 웹스크레핑 
 
+@app.route("/celeb", methods=["POST"])
+def celeb():
+    mbti = request.form["mbti"]
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    data = requests.get("https://m.blog.naver.com/007bibo/221975539649", headers=headers)
+    soup = BeautifulSoup(data.text, 'html.parser')
 
+    # ISTJ 타입 연예인
+    if mbti == "ISTJ":
+        celeb_istj = soup.select_one('#SE-48d2e943-7475-11ec-90a3-911d5c8ea861')
+        celeb_istj_text = celeb_istj.text
+        list_istj = celeb_istj_text.split(",")
+        print(list_istj)
+        return jsonify({'msg': list_istj})
+
+    # ISFJ 타입 연예인
+    if mbti == "ISFJ":
+        celeb_isfj = soup.select_one('#SE-48d35e87-7475-11ec-90a3-83613d4eb033')
+        celeb_isfj_text = celeb_isfj.text
+        list_isfj = celeb_isfj_text.split(",")
+        print(list_isfj)
+        return jsonify({'msg': list_isfj})
+
+    # ISTP 타입 연예인
+    if mbti == "ISTP":
+        celeb_istp = soup.select_one('#SE-48d3f9d9-7475-11ec-90a3-6b8cd4917d45')
+        celeb_istp_text = celeb_istp.text
+        list_istp = celeb_istp_text.split(",")
+        print(list_istp)
+        return jsonify({'msg': list_istp})
+
+    # ISFP 타입 연예인
+    if mbti == "ISFP":
+        celeb_isfp = soup.select_one('#SE-48d46f1c-7475-11ec-90a3-5f31001f9280')
+        celeb_isfp_text = celeb_isfp.text
+        list_isfp = celeb_isfp_text.split(",")
+        print(list_isfp)
+        return jsonify({'msg': list_isfp})
+
+    # INFJ 타입 연예인
+    if mbti == "INFJ":
+        celeb_infj = soup.select_one('#SE-48d580b5-7475-11ec-90a3-333dfc1a46df')
+        celeb_infj_text = celeb_infj.text
+        list_infj = celeb_infj_text.split(",")
+        print(list_infj)
+        return jsonify({'msg': list_infj})
+
+    # INTJ 타입 연예인
+    if mbti == "INTJ":
+        celeb_intj = soup.select_one('#SE-48d580b5-7475-11ec-90a3-333dfc1a46df')
+        celeb_intj_text = celeb_intj.text
+        list_intj = celeb_intj_text.split(",")
+        print(list_intj)
+        return jsonify({'msg': list_intj})
+
+    # INFP 타입 연예인
+    if mbti == "INFP":
+        celeb_infp = soup.select_one('#SE-48d5f5fa-7475-11ec-90a3-75a72af945fa')
+        celeb_infp_text = celeb_infp.text
+        list_infp = celeb_infp_text.split(",")
+        print(list_infp)
+        return jsonify({'msg': list_infp})
+
+    # INTP 타입 연예인
+    if mbti == "INTP":
+        celeb_intp = soup.select_one('#SE-48d6924f-7475-11ec-90a3-1703a6b61c68')
+        celeb_intp_text = celeb_intp.text
+        list_intp = celeb_intp_text.split(",")
+        print(list_intp)
+        return jsonify({'msg': list_intp})
+
+    # ESTP 타입 연예인
+    if mbti == "ESTP":
+        celeb_estp = soup.select_one('#SE-48d70791-7475-11ec-90a3-5ddbd88dcabc')
+        celeb_estp_text = celeb_estp.text
+        list_estp = celeb_estp_text.split(",")
+        print(list_estp)
+        return jsonify({'msg': list_estp})
+
+    # ESFP 타입 연예인
+    if mbti == "ESFP":
+        celeb_esfp = soup.select_one('#SE-48d77cd7-7475-11ec-90a3-c70a41ca485f')
+        celeb_esfp_text = celeb_esfp.text
+        list_esfp = celeb_esfp_text.split(",")
+        print(list_esfp)
+        return jsonify({'msg': list_esfp})
+
+    # ESTJ 타입 연예인
+    if mbti == "ESTJ":
+        celeb_estj = soup.select_one('#SE-48d8192e-7475-11ec-90a3-330182f6b817')
+        celeb_estj_text = celeb_estj.text
+        list_estj = celeb_estj_text.split(",")
+        print(list_estj)
+        return jsonify({'msg': list_estj})
+
+    # ESFJ 타입 연예인
+    if mbti == "ESFJ":
+        celeb_esfj = soup.select_one('#SE-48d88e70-7475-11ec-90a3-dbd71604fecf')
+        celeb_esfj_text = celeb_esfj.text
+        list_esfj = celeb_esfj_text.split(",")
+        print(list_esfj)
+        return jsonify({'msg': list_esfj})
+
+    # ENFP 타입 연예인
+    if mbti == "ENFP":
+        celeb_enfp = soup.select_one('#SE-48d903b2-7475-11ec-90a3-ed76b7427339')
+        celeb_enfp_text = celeb_enfp.text
+        list_enfp = celeb_enfp_text.split(",")
+        print(list_enfp)
+        return jsonify({'msg': list_enfp})
+
+    # ENTP 타입 연예인
+    if mbti == "ENTP":
+        celeb_entp = soup.select_one('#SE-48d9a006-7475-11ec-90a3-4d11aeb72e2e')
+        celeb_entp_text = celeb_entp.text
+        list_entp = celeb_entp_text.split(",")
+        print(list_entp)
+        return jsonify({'msg': list_entp})
+
+    # ENFJ 타입 연예인
+    if mbti == "ENFJ":
+        celeb_enfj = soup.select_one('#SE-48da1548-7475-11ec-90a3-93c529204ec0')
+        celeb_enfj_text = celeb_enfj.text
+        list_enfj = celeb_enfj_text.split(",")
+        print(list_enfj)
+        return jsonify({'msg': list_enfj})
+
+    # ENTJ 타입 연예인
+    if mbti == "ENTJ":
+        celeb_entj = soup.select_one('#SE-48dab09f-7475-11ec-90a3-cbd7e4a38792')
+        celeb_entj_text = celeb_entj.text
+        list_entj = celeb_entj_text.split(",")
+        print(list_entj)
+        return jsonify({'msg': list_entj})
 
 
 

@@ -19,7 +19,7 @@ function login() {
                         url: "/loginsuccess",
                         data: { email: inputemail },
                         success: window.location.assign(
-                            "http://lewigolski-bk.shop/user"
+                            "http://localhost:8000/user"
                         ),
                     });
                 } else {
@@ -33,5 +33,5 @@ function login() {
 }
 
 function register() {
-    window.location.assign("http://lewigolski-bk.shop/registration");
+    window.location.assign("http://localhost:8000/registration");
 }
